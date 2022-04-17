@@ -1,6 +1,6 @@
 ﻿namespace AutocadExtension
 {
-    partial class Lab
+    partial class LabForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.OK = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.PointsCheckBox = new System.Windows.Forms.CheckBox();
-            this.Polilines = new System.Windows.Forms.CheckBox();
+            this.PolylinesCheckBox = new System.Windows.Forms.CheckBox();
             this.SplinesCheckBox = new System.Windows.Forms.CheckBox();
             this.PathLabel = new System.Windows.Forms.Label();
             this.PathTextBox = new System.Windows.Forms.TextBox();
@@ -40,7 +40,7 @@
             this.PoliLinesLabel = new System.Windows.Forms.Label();
             this.SplinesLabel = new System.Windows.Forms.Label();
             this.PointsLabel = new System.Windows.Forms.Label();
-            this.PolilinesTextBox = new System.Windows.Forms.TextBox();
+            this.PolylinesTextBox = new System.Windows.Forms.TextBox();
             this.SplinesTextBox = new System.Windows.Forms.TextBox();
             this.PointsTextBox = new System.Windows.Forms.TextBox();
             this.SavePrimitivesGroupBox.SuspendLayout();
@@ -78,16 +78,16 @@
             this.PointsCheckBox.UseVisualStyleBackColor = true;
             this.PointsCheckBox.CheckedChanged += new System.EventHandler(this.PointsCheckBox_CheckedChanged);
             // 
-            // Polilines
+            // Polylines
             // 
-            this.Polilines.AutoSize = true;
-            this.Polilines.Location = new System.Drawing.Point(6, 42);
-            this.Polilines.Name = "Polilines";
-            this.Polilines.Size = new System.Drawing.Size(82, 17);
-            this.Polilines.TabIndex = 3;
-            this.Polilines.Text = "Полилинии";
-            this.Polilines.UseVisualStyleBackColor = true;
-            this.Polilines.CheckedChanged += new System.EventHandler(this.PolilinesCheckBox_CheckedChanged);
+            this.PolylinesCheckBox.AutoSize = true;
+            this.PolylinesCheckBox.Location = new System.Drawing.Point(6, 42);
+            this.PolylinesCheckBox.Name = "Polylines";
+            this.PolylinesCheckBox.Size = new System.Drawing.Size(82, 17);
+            this.PolylinesCheckBox.TabIndex = 3;
+            this.PolylinesCheckBox.Text = "Полилинии";
+            this.PolylinesCheckBox.UseVisualStyleBackColor = true;
+            this.PolylinesCheckBox.CheckedChanged += new System.EventHandler(this.PolylinesCheckBox_CheckedChanged);
             // 
             // SplinesCheckBox
             // 
@@ -109,7 +109,6 @@
             this.PathLabel.Size = new System.Drawing.Size(183, 13);
             this.PathLabel.TabIndex = 5;
             this.PathLabel.Text = "Enter path and name of file with data:";
-            this.PathLabel.Click += new System.EventHandler(this.EnterPathLabel_Click);
             // 
             // PathTextBox
             // 
@@ -117,12 +116,11 @@
             this.PathTextBox.Name = "PathTextBox";
             this.PathTextBox.Size = new System.Drawing.Size(175, 20);
             this.PathTextBox.TabIndex = 8;
-            this.PathTextBox.TextChanged += new System.EventHandler(this.PathTextBox_TextChanged);
             // 
             // SavePrimitivesGroupBox
             // 
             this.SavePrimitivesGroupBox.Controls.Add(this.PointsCheckBox);
-            this.SavePrimitivesGroupBox.Controls.Add(this.Polilines);
+            this.SavePrimitivesGroupBox.Controls.Add(this.PolylinesCheckBox);
             this.SavePrimitivesGroupBox.Controls.Add(this.SplinesCheckBox);
             this.SavePrimitivesGroupBox.Location = new System.Drawing.Point(21, 48);
             this.SavePrimitivesGroupBox.Name = "SavePrimitivesGroupBox";
@@ -130,14 +128,13 @@
             this.SavePrimitivesGroupBox.TabIndex = 9;
             this.SavePrimitivesGroupBox.TabStop = false;
             this.SavePrimitivesGroupBox.Text = "Сохранить примитивы";
-            this.SavePrimitivesGroupBox.Enter += new System.EventHandler(this.SavePrimitivesGroupBox_Enter);
             // 
             // Found
             // 
             this.Found.Controls.Add(this.PoliLinesLabel);
             this.Found.Controls.Add(this.SplinesLabel);
             this.Found.Controls.Add(this.PointsLabel);
-            this.Found.Controls.Add(this.PolilinesTextBox);
+            this.Found.Controls.Add(this.PolylinesTextBox);
             this.Found.Controls.Add(this.SplinesTextBox);
             this.Found.Controls.Add(this.PointsTextBox);
             this.Found.Location = new System.Drawing.Point(204, 48);
@@ -146,27 +143,24 @@
             this.Found.TabIndex = 5;
             this.Found.TabStop = false;
             this.Found.Text = "Найдено примитивов";
-            this.Found.Enter += new System.EventHandler(this.FoundGroupBox_Enter);
             // 
             // PoliLinesLabel
             // 
             this.PoliLinesLabel.AutoSize = true;
-            this.PoliLinesLabel.Location = new System.Drawing.Point(7, 68);
+            this.PoliLinesLabel.Location = new System.Drawing.Point(7, 45);
             this.PoliLinesLabel.Name = "PoliLinesLabel";
             this.PoliLinesLabel.Size = new System.Drawing.Size(63, 13);
             this.PoliLinesLabel.TabIndex = 5;
             this.PoliLinesLabel.Text = "Полилиний";
-            this.PoliLinesLabel.Click += new System.EventHandler(this.PoliLinesLabel_Click);
             // 
             // SplinesLabel
             // 
             this.SplinesLabel.AutoSize = true;
-            this.SplinesLabel.Location = new System.Drawing.Point(7, 45);
+            this.SplinesLabel.Location = new System.Drawing.Point(7, 66);
             this.SplinesLabel.Name = "SplinesLabel";
             this.SplinesLabel.Size = new System.Drawing.Size(59, 13);
             this.SplinesLabel.TabIndex = 4;
             this.SplinesLabel.Text = "Сплайнов:";
-            this.SplinesLabel.Click += new System.EventHandler(this.Splines_Label);
             // 
             // PointsLabel
             // 
@@ -176,25 +170,22 @@
             this.PointsLabel.Size = new System.Drawing.Size(40, 13);
             this.PointsLabel.TabIndex = 3;
             this.PointsLabel.Text = "Точек:";
-            this.PointsLabel.Click += new System.EventHandler(this.PointsLabel_Click);
             // 
-            // PolilinesTextBox
+            // PolylinesTextBox
             // 
-            this.PolilinesTextBox.Location = new System.Drawing.Point(125, 65);
-            this.PolilinesTextBox.Name = "PolilinesTextBox";
-            this.PolilinesTextBox.ReadOnly = true;
-            this.PolilinesTextBox.Size = new System.Drawing.Size(36, 20);
-            this.PolilinesTextBox.TabIndex = 2;
-            this.PolilinesTextBox.TextChanged += new System.EventHandler(this.PolilinesTextBox_TextChanged);
+            this.PolylinesTextBox.Location = new System.Drawing.Point(125, 42);
+            this.PolylinesTextBox.Name = "PolylinesTextBox";
+            this.PolylinesTextBox.ReadOnly = true;
+            this.PolylinesTextBox.Size = new System.Drawing.Size(36, 20);
+            this.PolylinesTextBox.TabIndex = 2;
             // 
             // SplinesTextBox
             // 
-            this.SplinesTextBox.Location = new System.Drawing.Point(125, 42);
+            this.SplinesTextBox.Location = new System.Drawing.Point(125, 63);
             this.SplinesTextBox.Name = "SplinesTextBox";
             this.SplinesTextBox.ReadOnly = true;
             this.SplinesTextBox.Size = new System.Drawing.Size(36, 20);
             this.SplinesTextBox.TabIndex = 1;
-            this.SplinesTextBox.TextChanged += new System.EventHandler(this.SplinesTextBox_TextChanged);
             // 
             // PointsTextBox
             // 
@@ -203,9 +194,8 @@
             this.PointsTextBox.ReadOnly = true;
             this.PointsTextBox.Size = new System.Drawing.Size(36, 20);
             this.PointsTextBox.TabIndex = 0;
-            this.PointsTextBox.TextChanged += new System.EventHandler(this.PointsTextBox_TextChanged);
             // 
-            // Lab
+            // LabForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -218,9 +208,8 @@
             this.Controls.Add(this.OK);
             this.MaximumSize = new System.Drawing.Size(400, 220);
             this.MinimumSize = new System.Drawing.Size(400, 220);
-            this.Name = "Lab";
+            this.Name = "LabForm";
             this.Text = "Lab";
-            this.Load += new System.EventHandler(this.MyForm_Load);
             this.SavePrimitivesGroupBox.ResumeLayout(false);
             this.SavePrimitivesGroupBox.PerformLayout();
             this.Found.ResumeLayout(false);
@@ -235,7 +224,7 @@
         private System.Windows.Forms.Button OK;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.CheckBox PointsCheckBox;
-        private System.Windows.Forms.CheckBox Polilines;
+        private System.Windows.Forms.CheckBox PolylinesCheckBox;
         private System.Windows.Forms.CheckBox SplinesCheckBox;
         private System.Windows.Forms.Label PathLabel;
         private System.Windows.Forms.TextBox PathTextBox;
@@ -244,7 +233,7 @@
         private System.Windows.Forms.Label PoliLinesLabel;
         private System.Windows.Forms.Label SplinesLabel;
         private System.Windows.Forms.Label PointsLabel;
-        private System.Windows.Forms.TextBox PolilinesTextBox;
+        private System.Windows.Forms.TextBox PolylinesTextBox;
         private System.Windows.Forms.TextBox SplinesTextBox;
         private System.Windows.Forms.TextBox PointsTextBox;
     }

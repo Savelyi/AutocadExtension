@@ -7,53 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 namespace AutocadExtension
 {
-    public partial class Lab : Form
+    public partial class LabForm : Form
     {
-        private MyCommandClass commandClass;
-        public bool IncludePoliLines { get; set; }
+        public bool IncludePolyLines { get; set; }
         public bool IncludeSplines { get; set; }
         public bool IncludePoints { get; set; }
-        public Lab()
+        public LabForm()
         {
-            //commandClass = new MyCommandClass();
             InitializeComponent();
         }
-
-        private void MyForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PathTextBox_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-        private void PointsTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SplinesTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PolilinesTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void PointsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             IncludePoints = PointsCheckBox.Checked;
         }
 
-        private void PolilinesCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void PolylinesCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            IncludePoliLines = PointsCheckBox.Checked;
+            IncludePolyLines = PolylinesCheckBox.Checked;
         }
 
         private void SplinesCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -62,37 +35,67 @@ namespace AutocadExtension
         }
         private void Cancel_Click(object sender, EventArgs e)
         {
-
+            PointsTextBox.Clear();
+            PolylinesTextBox.Clear();
+            SplinesTextBox.Clear();
+            PointsCheckBox.Checked = false;
+            PointsCheckBox.Checked = false;
+            PointsCheckBox.Checked = false;
+            this.Close();
         }
         private void OK_Click(object sender, EventArgs e)
         {
-
+            FindAndSaveData();
         }
-        private void FoundGroupBox_Enter(object sender, EventArgs e)
+
+
+        private void FindAndSaveData()
         {
+            GeneralInfoDTO generalInfo = MyCommandClassHelpers.GetInfo();
+            string path = PathTextBox.Text;
+            FileStream stream;
+            try
+            {
+                stream = new FileStream(path, FileMode.Create, FileAccess.Write);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            PointsTextBox.Text = generalInfo.Points.Count.ToString();
+            SplinesTextBox.Text = generalInfo.Splines.Count.ToString();
+            PolylinesTextBox.Text = generalInfo.PolyLines.Count.ToString();
+            using (StreamWriter streamWriter = new StreamWriter(stream))
+            {
+                if (IncludePoints)
+                {
+                    foreach (var item in generalInfo.Points)
+                    {
+                        streamWriter.WriteLine(item);
+                    }
+                }
+                if (IncludePolyLines)
+                {
+                    foreach (var item in generalInfo.PolyLines)
+                    {
+                        streamWriter.WriteLine(item);
+                    }
+                }
+                if (IncludeSplines)
+                {
+                    foreach (var item in generalInfo.Splines)
+                    {
+                        streamWriter.WriteLine(item);
+                    }
+                }
+            }
+            stream.Close();
+            MessageBox.Show("Data found and saved");
 
         }
-        private void PointsLabel_Click(object sender, EventArgs e)
-        {
 
-        }
-        private void PoliLinesLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EnterPathLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Splines_Label(object sender, EventArgs e)
-        {
-
-        }
-        private void SavePrimitivesGroupBox_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
 

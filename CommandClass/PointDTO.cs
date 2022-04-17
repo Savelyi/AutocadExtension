@@ -10,5 +10,10 @@ namespace AutocadExtension
     {
         public string Position { get; set; }
         public string LayerName { get; set; }
+
+        public override string ToString()
+        {
+            return $"Point Info:\nPosition - {Position}, LayerName - {LayerName}\n{new string('=',10)}";
+        }
     }
 }

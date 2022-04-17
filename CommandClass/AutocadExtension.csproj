@@ -52,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LineDTO.cs" />
+    <Compile Include="GeneralInfoDTO.cs" />
+    <Compile Include="MyCommandClassHelpers.cs" />
+    <Compile Include="PolyLineDTO.cs" />
     <Compile Include="MyCommandClass.cs" />
     <Compile Include="MyForm.cs">
       <SubType>Form</SubType>
@@ -62,6 +64,7 @@
     </Compile>
     <Compile Include="PointDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplineDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
