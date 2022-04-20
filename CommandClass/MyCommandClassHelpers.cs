@@ -37,6 +37,7 @@ namespace AutocadExtension
                     {
 
                         var line = db.TransactionManager.GetObject(item.Key, OpenMode.ForRead) as Polyline;
+                        
                         infoDTO.PolyLines.Add(new PolyLineDTO
                         {
                             LineType = item.Value,

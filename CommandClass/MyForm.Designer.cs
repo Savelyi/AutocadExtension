@@ -49,9 +49,10 @@
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(108, 150);
+            this.OK.Location = new System.Drawing.Point(162, 231);
+            this.OK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(75, 23);
+            this.OK.Size = new System.Drawing.Size(112, 35);
             this.OK.TabIndex = 0;
             this.OK.Text = "OK";
             this.OK.UseVisualStyleBackColor = true;
@@ -59,9 +60,10 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(204, 150);
+            this.Cancel.Location = new System.Drawing.Point(306, 231);
+            this.Cancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(75, 23);
+            this.Cancel.Size = new System.Drawing.Size(112, 35);
             this.Cancel.TabIndex = 1;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
@@ -70,20 +72,22 @@
             // PointsCheckBox
             // 
             this.PointsCheckBox.AutoSize = true;
-            this.PointsCheckBox.Location = new System.Drawing.Point(6, 19);
+            this.PointsCheckBox.Location = new System.Drawing.Point(9, 29);
+            this.PointsCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PointsCheckBox.Name = "PointsCheckBox";
-            this.PointsCheckBox.Size = new System.Drawing.Size(56, 17);
+            this.PointsCheckBox.Size = new System.Drawing.Size(79, 24);
             this.PointsCheckBox.TabIndex = 2;
             this.PointsCheckBox.Text = "Точки";
             this.PointsCheckBox.UseVisualStyleBackColor = true;
             this.PointsCheckBox.CheckedChanged += new System.EventHandler(this.PointsCheckBox_CheckedChanged);
             // 
-            // Polylines
+            // PolylinesCheckBox
             // 
             this.PolylinesCheckBox.AutoSize = true;
-            this.PolylinesCheckBox.Location = new System.Drawing.Point(6, 42);
-            this.PolylinesCheckBox.Name = "Polylines";
-            this.PolylinesCheckBox.Size = new System.Drawing.Size(82, 17);
+            this.PolylinesCheckBox.Location = new System.Drawing.Point(9, 65);
+            this.PolylinesCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PolylinesCheckBox.Name = "PolylinesCheckBox";
+            this.PolylinesCheckBox.Size = new System.Drawing.Size(121, 24);
             this.PolylinesCheckBox.TabIndex = 3;
             this.PolylinesCheckBox.Text = "Полилинии";
             this.PolylinesCheckBox.UseVisualStyleBackColor = true;
@@ -93,9 +97,10 @@
             // 
             this.SplinesCheckBox.AutoSize = true;
             this.SplinesCheckBox.BackColor = System.Drawing.SystemColors.Control;
-            this.SplinesCheckBox.Location = new System.Drawing.Point(6, 65);
+            this.SplinesCheckBox.Location = new System.Drawing.Point(9, 100);
+            this.SplinesCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SplinesCheckBox.Name = "SplinesCheckBox";
-            this.SplinesCheckBox.Size = new System.Drawing.Size(71, 17);
+            this.SplinesCheckBox.Size = new System.Drawing.Size(103, 24);
             this.SplinesCheckBox.TabIndex = 4;
             this.SplinesCheckBox.Text = "Сплайны";
             this.SplinesCheckBox.UseVisualStyleBackColor = false;
@@ -104,17 +109,19 @@
             // PathLabel
             // 
             this.PathLabel.AutoSize = true;
-            this.PathLabel.Location = new System.Drawing.Point(12, 18);
+            this.PathLabel.Location = new System.Drawing.Point(18, 28);
+            this.PathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PathLabel.Name = "PathLabel";
-            this.PathLabel.Size = new System.Drawing.Size(183, 13);
+            this.PathLabel.Size = new System.Drawing.Size(273, 20);
             this.PathLabel.TabIndex = 5;
             this.PathLabel.Text = "Enter path and name of file with data:";
             // 
             // PathTextBox
             // 
-            this.PathTextBox.Location = new System.Drawing.Point(204, 15);
+            this.PathTextBox.Location = new System.Drawing.Point(306, 23);
+            this.PathTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PathTextBox.Name = "PathTextBox";
-            this.PathTextBox.Size = new System.Drawing.Size(175, 20);
+            this.PathTextBox.Size = new System.Drawing.Size(260, 26);
             this.PathTextBox.TabIndex = 8;
             // 
             // SavePrimitivesGroupBox
@@ -122,9 +129,11 @@
             this.SavePrimitivesGroupBox.Controls.Add(this.PointsCheckBox);
             this.SavePrimitivesGroupBox.Controls.Add(this.PolylinesCheckBox);
             this.SavePrimitivesGroupBox.Controls.Add(this.SplinesCheckBox);
-            this.SavePrimitivesGroupBox.Location = new System.Drawing.Point(21, 48);
+            this.SavePrimitivesGroupBox.Location = new System.Drawing.Point(32, 74);
+            this.SavePrimitivesGroupBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SavePrimitivesGroupBox.Name = "SavePrimitivesGroupBox";
-            this.SavePrimitivesGroupBox.Size = new System.Drawing.Size(162, 96);
+            this.SavePrimitivesGroupBox.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SavePrimitivesGroupBox.Size = new System.Drawing.Size(243, 148);
             this.SavePrimitivesGroupBox.TabIndex = 9;
             this.SavePrimitivesGroupBox.TabStop = false;
             this.SavePrimitivesGroupBox.Text = "Сохранить примитивы";
@@ -137,9 +146,11 @@
             this.Found.Controls.Add(this.PolylinesTextBox);
             this.Found.Controls.Add(this.SplinesTextBox);
             this.Found.Controls.Add(this.PointsTextBox);
-            this.Found.Location = new System.Drawing.Point(204, 48);
+            this.Found.Location = new System.Drawing.Point(306, 74);
+            this.Found.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Found.Name = "Found";
-            this.Found.Size = new System.Drawing.Size(167, 96);
+            this.Found.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Found.Size = new System.Drawing.Size(250, 148);
             this.Found.TabIndex = 5;
             this.Found.TabStop = false;
             this.Found.Text = "Найдено примитивов";
@@ -147,67 +158,74 @@
             // PoliLinesLabel
             // 
             this.PoliLinesLabel.AutoSize = true;
-            this.PoliLinesLabel.Location = new System.Drawing.Point(7, 45);
+            this.PoliLinesLabel.Location = new System.Drawing.Point(10, 69);
+            this.PoliLinesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PoliLinesLabel.Name = "PoliLinesLabel";
-            this.PoliLinesLabel.Size = new System.Drawing.Size(63, 13);
+            this.PoliLinesLabel.Size = new System.Drawing.Size(95, 20);
             this.PoliLinesLabel.TabIndex = 5;
             this.PoliLinesLabel.Text = "Полилиний";
             // 
             // SplinesLabel
             // 
             this.SplinesLabel.AutoSize = true;
-            this.SplinesLabel.Location = new System.Drawing.Point(7, 66);
+            this.SplinesLabel.Location = new System.Drawing.Point(10, 102);
+            this.SplinesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SplinesLabel.Name = "SplinesLabel";
-            this.SplinesLabel.Size = new System.Drawing.Size(59, 13);
+            this.SplinesLabel.Size = new System.Drawing.Size(88, 20);
             this.SplinesLabel.TabIndex = 4;
             this.SplinesLabel.Text = "Сплайнов:";
             // 
             // PointsLabel
             // 
             this.PointsLabel.AutoSize = true;
-            this.PointsLabel.Location = new System.Drawing.Point(7, 22);
+            this.PointsLabel.Location = new System.Drawing.Point(10, 34);
+            this.PointsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PointsLabel.Name = "PointsLabel";
-            this.PointsLabel.Size = new System.Drawing.Size(40, 13);
+            this.PointsLabel.Size = new System.Drawing.Size(57, 20);
             this.PointsLabel.TabIndex = 3;
             this.PointsLabel.Text = "Точек:";
             // 
             // PolylinesTextBox
             // 
-            this.PolylinesTextBox.Location = new System.Drawing.Point(125, 42);
+            this.PolylinesTextBox.Location = new System.Drawing.Point(188, 65);
+            this.PolylinesTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PolylinesTextBox.Name = "PolylinesTextBox";
             this.PolylinesTextBox.ReadOnly = true;
-            this.PolylinesTextBox.Size = new System.Drawing.Size(36, 20);
+            this.PolylinesTextBox.Size = new System.Drawing.Size(52, 26);
             this.PolylinesTextBox.TabIndex = 2;
             // 
             // SplinesTextBox
             // 
-            this.SplinesTextBox.Location = new System.Drawing.Point(125, 63);
+            this.SplinesTextBox.Location = new System.Drawing.Point(188, 97);
+            this.SplinesTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SplinesTextBox.Name = "SplinesTextBox";
             this.SplinesTextBox.ReadOnly = true;
-            this.SplinesTextBox.Size = new System.Drawing.Size(36, 20);
+            this.SplinesTextBox.Size = new System.Drawing.Size(52, 26);
             this.SplinesTextBox.TabIndex = 1;
             // 
             // PointsTextBox
             // 
-            this.PointsTextBox.Location = new System.Drawing.Point(125, 19);
+            this.PointsTextBox.Location = new System.Drawing.Point(188, 29);
+            this.PointsTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PointsTextBox.Name = "PointsTextBox";
             this.PointsTextBox.ReadOnly = true;
-            this.PointsTextBox.Size = new System.Drawing.Size(36, 20);
+            this.PointsTextBox.Size = new System.Drawing.Size(52, 26);
             this.PointsTextBox.TabIndex = 0;
             // 
             // LabForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 181);
+            this.ClientSize = new System.Drawing.Size(568, 294);
             this.Controls.Add(this.Found);
             this.Controls.Add(this.SavePrimitivesGroupBox);
             this.Controls.Add(this.PathTextBox);
             this.Controls.Add(this.PathLabel);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.OK);
-            this.MaximumSize = new System.Drawing.Size(400, 220);
-            this.MinimumSize = new System.Drawing.Size(400, 220);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(590, 350);
+            this.MinimumSize = new System.Drawing.Size(589, 308);
             this.Name = "LabForm";
             this.Text = "Lab";
             this.SavePrimitivesGroupBox.ResumeLayout(false);
