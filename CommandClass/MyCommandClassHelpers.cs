@@ -3,6 +3,7 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AutocadExtension
 {
@@ -16,8 +17,7 @@ namespace AutocadExtension
             testDoc = Application.DocumentManager.MdiActiveDocument;
             if (testDoc == null)
                 return null;
-            var ed = testDoc.Editor;
-            var ucs = ed.CurrentUserCoordinateSystem;
+            var ucs = testDoc.Editor.CurrentUserCoordinateSystem;
             Database db = testDoc.Database;
             GeneralInfoDTO infoDTO = new GeneralInfoDTO();
             Dictionary<ObjectId, string> projectEntities = GetAllEntities(db);
@@ -46,7 +46,7 @@ namespace AutocadExtension
                             pointCollection.Add(pline.GetPoint3dAt(i).TransformBy(ucs));
                         }
 
-                        List<double> Radiuses=new List<double>();
+                        List<double> Radiuses = new List<double>();
                         if (pline.HasBulges)
                         {
                             double bulge;
@@ -55,11 +55,14 @@ namespace AutocadExtension
                                 bulge = pline.GetBulgeAt(i);
                                 if (bulge != 0)
                                 {
-                                    var point1=pline.GetPoint3dAt(i).TransformBy(ucs);
-                                    var point2=pline.GetPoint3dAt(i+1).TransformBy(ucs);
-                                    double d = Math.Sqrt(Math.Pow(point2.X - point1.X, 2) + Math.Pow(point2.Y - point1.Y, 2))/2;
-                                    double radius = (d * (Math.Pow(bulge, 2) + 1)) / (2 * bulge);
-                                    Radiuses.Add(radius);
+                                    var point1 = pline.GetPoint3dAt(i).TransformBy(ucs);
+                                    if (point1 != pline.EndPoint)
+                                    {
+                                       var point2 = pline.GetPoint3dAt(i + 1).TransformBy(ucs);
+                                        double d = Math.Sqrt(Math.Pow(point2.X - point1.X, 2) + Math.Pow(point2.Y - point1.Y, 2)) / 2;
+                                        double radius = (d * (Math.Pow(bulge, 2) + 1)) / (2 * Math.Abs(bulge));
+                                        Radiuses.Add(radius);
+                                    }
                                 }
                             }
                         }
@@ -70,8 +73,8 @@ namespace AutocadExtension
                             EndPoint = $"{pline.EndPoint.X},{pline.EndPoint.Y},{pline.EndPoint.Z}",
                             ColorNumber = pline.EntityColor.ColorIndex,
                             LayerName = pline.Layer,
-                            Points=pointCollection,
-                            RadiusCollection=Radiuses
+                            Points = pointCollection.Cast<Point3d>().ToList(),
+                            RadiusCollection = Radiuses
                         });
                         continue;
                     }
@@ -79,7 +82,7 @@ namespace AutocadExtension
                     {
                         var pointCollection = new Point3dCollection();
                         var line = db.TransactionManager.GetObject(item.Key, OpenMode.ForRead) as Spline;
-                        for (int i = 0; i < line.NumControlPoints; i++)
+                        for (int i = 0; i < line.NumFitPoints; i++)
                         {
                             pointCollection.Add(line.GetFitPointAt(i).TransformBy(ucs));
                         }
@@ -90,7 +93,7 @@ namespace AutocadExtension
                             EndPoint = $"{line.EndPoint.X},{line.EndPoint.Y},{line.EndPoint.Z}",
                             ColorNumber = line.EntityColor.ColorIndex,
                             LayerName = line.Layer,
-                            Points = pointCollection
+                            Points = pointCollection.Cast<Point3d>().ToList()
                         });
                     }
                 }

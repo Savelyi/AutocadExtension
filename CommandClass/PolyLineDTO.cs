@@ -22,19 +22,24 @@ namespace AutocadExtension
         public int? ColorNumber { get; set; }
         public string StartPoint { get; set; }
         public string EndPoint { get; set; }
-        public Point3dCollection Points { get; set; }
+        public List<Point3d> Points { get; set; }
         public List<double> RadiusCollection { get; set; }
         public override string ToString()
         {
-            string RadiusStr = "RadiusCollection:\n";
-            for (int i = 0; i < RadiusCollection.Count; i++)
+            int i = 0;
+            string RadiusStr = "";
+            if (RadiusCollection.Count > 0)
             {
-                RadiusStr += $"{i}. {RadiusCollection[i]}\n";
+                RadiusStr = "RadiusCollection:\n";
+                foreach (var item in RadiusCollection)
+                {
+                    RadiusStr += $"{i++}. {item}\n";
+                }
             }
             string pointsStr = GetPointsToString();
             return $"Line Info:\nLineType - {LineType}, LayerName - {LayerName}, " +
                 $"ColorNumber - {ColorNumber},\nStartPoint - {StartPoint}, EndPoint - {EndPoint}" +
-                $"Included Points:\n" +
+                $"\nIncluded Points:\n" +
                 $"{pointsStr}" +
                 $"{RadiusStr}" +
                 $"\n{new string('=', 10)}";
@@ -43,10 +48,9 @@ namespace AutocadExtension
         private string GetPointsToString()
         {
             string outputStr = "";
-            List<Point3d> points = Points.Cast<Point3d>().ToList();
-            for (int i = 0; i < points.Count; i++)
+            for (int i = 0; i < Points.Count; i++)
             {
-                outputStr += $"Point {i}: {points[i].X}, {points[i].Y}, {points[i].Z}\n";
+                outputStr += $"Point {i}: {Points[i].X}, {Points[i].Y}, {Points[i].Z}\n";
             }
             return outputStr;
         }
